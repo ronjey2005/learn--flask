@@ -11,4 +11,4 @@ def about():
     return render_template('about.html')
 
 if __name__ == "__main__":
-    App_learnFlask.run()
+    App_learnFlask.run(debug=True)
