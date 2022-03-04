@@ -10,5 +10,9 @@ def home():
 def about():
     return render_template('about.html')
 
+@App_learnFlask.route('/success')
+def success():
+    return render_template('success.html')
+
 if __name__ == "__main__":
     App_learnFlask.run(debug=True)
