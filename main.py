@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 App_learnFlask = Flask(__name__)
 
@@ -10,9 +10,14 @@ def home():
 def about():
     return render_template('about.html')
 
-@App_learnFlask.route('/success')
+@App_learnFlask.route('/success', methods=["POST"])
 def success():
-    return render_template('success.html')
+    if(request.method == 'POST'):
+        email = request.form['email_name']
+        height = request.form['height_name']
+        print(f"email: {email}")
+        print(f"height: {height}")
+        return render_template('success.html')
 
 if __name__ == "__main__":
     App_learnFlask.run(debug=True)
