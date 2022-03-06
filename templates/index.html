@@ -3,6 +3,9 @@
 <body>
     <div class="container">
         <h1>Data Collector App</h1>
+        <div>
+            {{text | safe}}
+        </div>
         <form action="{{url_for('success')}}" method="POST">
             <input name="email_name" type="text" value="" placeholder="email" title="your email" />
             <input name="height_name" type="number" value="" placeholder="height" title="your height" />
