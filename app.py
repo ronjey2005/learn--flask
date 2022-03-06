@@ -41,8 +41,8 @@ def success():
         db.session.add(data)
         db.session.commit()
 
-        EmailMod = EmailModule(email,height)
-        EmailMod.send_email()
+        email_module = EmailModule(email,height)
+        email_module.send_email()
 
         return render_template('success.html')
         #return render_template('index.html' , text="already exist!")
