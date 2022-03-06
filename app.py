@@ -9,10 +9,12 @@ db = SQLAlchemy(app)
 class Data(db.Model):
     __tablename__ = "data"
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True)
-    height = db.Column(db.Integer)
+    email_ = db.Column(db.String(120), unique=True)
+    height_ = db.Column(db.Integer)
 
     def __init__(self, email_, height_):
+        print(f"--- email: {email_}")
+        print(f"--- height: {height_}")
         self.email_ = email_
         self.height_ = height_
 
@@ -31,6 +33,12 @@ def success():
         height = request.form['height_name']
         print(f"email: {email}")
         print(f"height: {height}")
+
+        data = Data(email, height)
+
+        db.session.add(data)
+        db.session.commit()
+
         return render_template('success.html')
 
 if __name__ == "__main__":
