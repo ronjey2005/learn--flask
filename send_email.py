@@ -7,13 +7,13 @@ class EmailModule:
         self.email = email
         self.height = height
 
-    def send_email(self):
+    def send_email(self, avg_height):
         from_email = "rjusuf@gmail.com"
         from_password = "sometrix"
         to_email = self.email
 
         subject = "Height Data"
-        message = f"Hey <strong>{self.height}</strong>cm"
+        message = f"Hey {email} : <strong>{self.height}</strong>cm. Average height is {avg_height}"
 
         msg = MIMEText(message, 'html')
         msg['Subject'] = subject
