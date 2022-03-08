@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from flask_sqlalchemy import SQLAlchemy
 from send_email import EmailModule
 from sqlalchemy.sql import func
@@ -24,13 +24,27 @@ class Data(db.Model):
 def home():
     return render_template('home.html')
 
-@app.route('/about/')
+@app.route('/about')
 def about():
     return render_template('about.html')
 
-@app.route('/download/')
-def download():
-    return render_template('download.html')
+@app.route('/upload_file')
+def upload_file():
+    return render_template('upload_file.html')
+
+@app.route('/success_upload', methods=["POST"])
+def success_upload():
+    file = request.files["file"]
+    file.save("./download/" + file.filename)
+    with open("./download/" + file.filename, 'a') as f:
+        f.write("this is addeddddddddddddddddd!!!!!!!!!!!!!!!!")
+    return render_template('success_upload.html')
+
+@app.route('/download_file')
+def download_file():
+
+    return render_template('download_file.html')
+
 
 @app.route('/success', methods=["POST"])
 def success():

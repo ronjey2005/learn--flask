@@ -1,0 +1,8 @@
+{%extends "index.html"%}
+{%block content%}
+<h2>Upload</h2>
+<form action="{{url_for('success_upload')}}" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <button type="submit">Submit</button>
+</form>
+{%endblock%}
