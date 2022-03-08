@@ -1,0 +1,9 @@
+{%extends "index.html"%}
+{%block content%}
+<h2>Download</h2>
+<form action="{{url_for('success_download')}}" method="POST">
+    <input name="email_name" type="text" value="" placeholder="email" title="your email" />
+    <input name="height_name" type="number" value="" placeholder="height" title="your height" />
+    <button type="submit">Submit</button>
+</form>
+{%endblock%}

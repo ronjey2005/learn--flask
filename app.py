@@ -28,6 +28,10 @@ def home():
 def about():
     return render_template('about.html')
 
+@app.route('/download/')
+def download():
+    return render_template('download.html')
+
 @app.route('/success', methods=["POST"])
 def success():
     if(request.method == 'POST'):

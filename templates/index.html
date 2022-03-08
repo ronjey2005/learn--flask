@@ -6,6 +6,11 @@
         <div>
             {{text | safe}}
         </div>
+        <nav style="margin: 20px;">
+            <a href="{{url_for('home')}}">Home</a>
+            <a href="{{url_for('about')}}">About</a>
+            <a href="{{url_for('download')}}">Download</a>
+        </nav>
         <form action="{{url_for('success')}}" method="POST">
             <input name="email_name" type="text" value="" placeholder="email" title="your email" />
             <input name="height_name" type="number" value="" placeholder="height" title="your height" />
