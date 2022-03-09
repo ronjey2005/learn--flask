@@ -23,13 +23,13 @@ class Data(db.Model):
 def home():
     return render_template('index.html')
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 @app.route('/upload_file')
 def upload_file():
-    return render_template('upload_file.html')
+    return render_template('upload-file.html')
 
 @app.route('/success_upload', methods=["POST"])
 def success_upload():
@@ -38,7 +38,7 @@ def success_upload():
     file.save("./download/" + file.filename)
     with open("./download/" + file.filename, 'a') as f:
         f.write("this is addeddddddddddddddddd!!!!!!!!!!!!!!!!")
-    return render_template('success_upload.html')
+    return render_template('upload-file-success.html')
 
 @app.route('/download_file')
 def download_file():
@@ -68,7 +68,7 @@ def success():
             # email_module = EmailModule(email,height)
             # email_module.send_email(avg_height, total_sample)
 
-            return render_template('success.html')
+            return render_template('contact-success.html')
         return render_template('about.html', text="email already exist!")
 
 if __name__ == "__main__":
