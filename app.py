@@ -69,7 +69,7 @@ def success():
             # email_module.send_email(avg_height, total_sample)
 
             return render_template('contact-success.html')
-        return render_template('about.html', text="email already exist!")
+        return render_template('contact.html', text="email already exist!")
 
 if __name__ == "__main__":
     app.run(debug=True)
