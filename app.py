@@ -7,7 +7,6 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:CaitlynClarise0711@localhost/height_collector'
 db = SQLAlchemy(app)
 
-
 class Data(db.Model):
     __tablename__ = "data"
     id = db.Column(db.Integer, primary_key=True)
@@ -22,7 +21,7 @@ class Data(db.Model):
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 @app.route('/about')
 def about():
@@ -34,6 +33,7 @@ def upload_file():
 
 @app.route('/success_upload', methods=["POST"])
 def success_upload():
+    global file
     file = request.files["file"]
     file.save("./download/" + file.filename)
     with open("./download/" + file.filename, 'a') as f:
@@ -42,9 +42,7 @@ def success_upload():
 
 @app.route('/download_file')
 def download_file():
-
-    return render_template('download_file.html')
-
+    return send_file("./download/" + file.filename, attachment_filename="yourfile.csv", as_attachment=True)
 
 @app.route('/success', methods=["POST"])
 def success():
@@ -65,13 +63,13 @@ def success():
 
             # print(func.avg(Data.height_))
             # print(db.session.query(func.avg(Data.height_)))
-            print(avg_height)
+            # print(avg_height)
 
-            email_module = EmailModule(email,height)
-            email_module.send_email(avg_height, total_sample)
+            # email_module = EmailModule(email,height)
+            # email_module.send_email(avg_height, total_sample)
 
             return render_template('success.html')
-        return render_template('index.html', text="already exist!")
+        return render_template('about.html', text="email already exist!")
 
 if __name__ == "__main__":
     app.run(debug=True)

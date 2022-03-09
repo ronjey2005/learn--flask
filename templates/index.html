@@ -3,21 +3,28 @@
 <body>
     <div class="container">
         <h1>Data Collector App</h1>
-        <div>
-            {{text | safe}}
-        </div>
+
         <nav style="margin: 20px;">
             <a href="{{url_for('home')}}">Home</a>
             <a href="{{url_for('about')}}">About</a>
             <a href="{{url_for('upload_file')}}">Upload</a>
         </nav>
-        <form action="{{url_for('success')}}" method="POST">
-            <input name="email_name" type="text" value="" placeholder="email" title="your email" />
-            <input name="height_name" type="number" value="" placeholder="height" title="your height" />
-            <button type="submit">Submit</button>
-        </form>
+
+        <hr />
+
+        <h2>{<code>%block content%</code>}</h2>
+
         {%block content%}
+
         {%endblock%}
+
+        <hr />
+
+        <h2>{<code>%block about%</code>}</h2>
+        {%block about%}
+
+        {%endblock%}
+
     </div>
     </body>
 </html>

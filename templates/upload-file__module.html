@@ -1,0 +1,6 @@
+{%block content%}
+<form action="{{url_for('success_upload')}}" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <button type="submit">Submit</button>
+</form>
+{%endblock%}
